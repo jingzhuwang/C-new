@@ -1,0 +1,9 @@
+{
+    "debug.node.autoAttach": "off",
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "iostream": "cpp"
+    }
+}
