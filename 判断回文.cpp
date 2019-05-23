@@ -12,7 +12,7 @@ typedef char QElemType;
 typedef int Status;
 
 /*
- *¶ÓÁĞ¶¨Òå
+ *é˜Ÿåˆ—å®šä¹‰
  */
 typedef struct ListNode
 {
@@ -22,19 +22,19 @@ typedef struct ListNode
 
 typedef struct ListQueue
 {
-    ListLink head;  //¶ÓÍ·
-    ListLink tail;  //¶ÓÎ²
+    ListLink head;  //é˜Ÿå¤´
+    ListLink tail;  //é˜Ÿå°¾
     int len;
 }ListQueue;
 
-Status Init_Queue(ListQueue& Q){  //³õÊ¼»¯¶ÓÁĞ
+Status Init_Queue(ListQueue& Q){  //åˆå§‹åŒ–é˜Ÿåˆ—
     Q.head=Q.tail=(ListLink)malloc(sizeof(ListNode));
     Q.tail->next=NULL;
     Q.len=0;
     return OK;
 }
 
-Status Del_Queue(ListQueue& Q){ //Ïú»Ù¶ÓÁĞ
+Status Del_Queue(ListQueue& Q){ //é”€æ¯é˜Ÿåˆ—
     ListLink tmp=Q.head;
     while(tmp!=NULL){
         Q.head=tmp->next;
@@ -44,7 +44,7 @@ Status Del_Queue(ListQueue& Q){ //Ïú»Ù¶ÓÁĞ
     return OK;
 }
 
-Status EnQueue(ListQueue& Q,QElemType item){ //Èë¶Ó
+Status EnQueue(ListQueue& Q,QElemType item){ //å…¥é˜Ÿ
     ListNode* newNode = (ListLink)malloc(sizeof(QElemType));
     newNode->data = item;
     newNode->next = NULL;
@@ -54,7 +54,7 @@ Status EnQueue(ListQueue& Q,QElemType item){ //Èë¶Ó
     return OK;
 }
 
-Status DeQueue(ListQueue& Q){ //ÎŞ·µ»ØÒıÓÃÖµ
+Status DeQueue(ListQueue& Q){ //æ— è¿”å›å¼•ç”¨å€¼
     ListNode *tmp=Q.head->next;
     Q.head=tmp->next;
     free(tmp);
@@ -62,7 +62,7 @@ Status DeQueue(ListQueue& Q){ //ÎŞ·µ»ØÒıÓÃÖµ
     return OK;
 }
 
-Status DeQueue(ListQueue& Q,QElemType& item){ //ÓĞ·µ»ØÒıÓÃÖµ
+Status DeQueue(ListQueue& Q,QElemType& item){ //æœ‰è¿”å›å¼•ç”¨å€¼
     if(Q.head == Q.tail) return ERROR;
     ListNode *tmp=Q.head->next;
     item=tmp->data;
@@ -78,25 +78,25 @@ QElemType GetQueue(ListQueue Q){
     return ERROR;
 }
 
-int Empty(ListQueue Q){ //ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ£¬Îª¿Õ·µ»Ø1
+int Empty(ListQueue Q){ //åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºè¿”å›1
     return !Q.len;    
 }
 
 /*
- *¶ÑÕ»¶¨Òå
+ *å †æ ˆå®šä¹‰
  */
 typedef struct Lnode
 {
-    SElemType data; //Êı¾İÓò
-    struct Lnode *next; //Ö¸ÏòÏÂÒ»¸öÔªËØ
+    SElemType data; //æ•°æ®åŸŸ
+    struct Lnode *next; //æŒ‡å‘ä¸‹ä¸€ä¸ªå…ƒç´ 
 } Lnode, *LStack;
 
-Status Init_Stack(LStack &S){  //³õÊ¼»¯Õ»
+Status Init_Stack(LStack &S){  //åˆå§‹åŒ–æ ˆ
     S = NULL;
     return OK;
 }
 
-Status Del_Stack(LStack &S){   //Ïú»ÙÕ»
+Status Del_Stack(LStack &S){   //é”€æ¯æ ˆ
     Lnode* p=S;
 	while(p){
 		S = S->next;
@@ -106,16 +106,16 @@ Status Del_Stack(LStack &S){   //Ïú»ÙÕ»
 	return OK;
 }
 
-Status Push(LStack &S, SElemType e){  //ÈëÕ»
-    Lnode* tmp = (LStack)malloc(sizeof(Lnode)); //¿ª±Ù½Úµã
+Status Push(LStack &S, SElemType e){  //å…¥æ ˆ
+    Lnode* tmp = (LStack)malloc(sizeof(Lnode)); //å¼€è¾ŸèŠ‚ç‚¹
     if(tmp == NULL) exit(ERROR); 
-    tmp->data = e;  //Êı¾İÓë¸³Öµ
+    tmp->data = e;  //æ•°æ®ä¸èµ‹å€¼
     tmp->next = S;
     S = tmp; 
     return OK;
 }
 
-Status Pop(LStack &S,SElemType& e){  //·µ»Øµ¯³öÖµ
+Status Pop(LStack &S,SElemType& e){  //è¿”å›å¼¹å‡ºå€¼
     if (S == NULL)
         return ERROR;
     Lnode* tmp;
@@ -126,18 +126,18 @@ Status Pop(LStack &S,SElemType& e){  //·µ»Øµ¯³öÖµ
     return OK;
 }
 
-int Empty(LStack S){ //·Ç¿Õ·µ»Ø0£¬¿Õ·µ»Ø1
+int Empty(LStack S){ //éç©ºè¿”å›0ï¼Œç©ºè¿”å›1
     if(S == NULL)
         return OK;
     return ERROR;
 }
 
 /*
- *ÅĞ¶Ï×Ö·û´®ÊÇ·ñÊÇ»ØÎÄ(ÓÃ¶ÑÕ»ºÍ¶ÓÁĞÊµÏÖ)£¬Èç¹ûÊÇ·µ»Ø1£¬·ñÔò·µ»Ø0
+ *åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦æ˜¯å›æ–‡(ç”¨å †æ ˆå’Œé˜Ÿåˆ—å®ç°)ï¼Œå¦‚æœæ˜¯è¿”å›1ï¼Œå¦åˆ™è¿”å›0
  *
- * ²ÎÊıËµÃ÷:
- *      c---×Ö·û´®µÄÊ×µØÖ·
- *      len---×Ö·û´®³¤¶È
+ * å‚æ•°è¯´æ˜:
+ *      c---å­—ç¬¦ä¸²çš„é¦–åœ°å€
+ *      len---å­—ç¬¦ä¸²é•¿åº¦
  * 
  */
 int Judge(char *c,int len){
@@ -169,7 +169,7 @@ int main()
     char c[100];
     char tmp;
     int len = 0;
-    printf("ÊäÈëÒªÅĞ¶ÏµÄ×Ö·û´®(ÊäÈë'#'Í£Ö¹ÊäÈë£¬×Ö·û´®×î´ó³¤¶È100):\n");
+    printf("è¾“å…¥è¦åˆ¤æ–­çš„å­—ç¬¦ä¸²(è¾“å…¥'#'åœæ­¢è¾“å…¥ï¼Œå­—ç¬¦ä¸²æœ€å¤§é•¿åº¦100):\n");
     scanf("%c",&tmp);
     while(tmp!='#'){
         c[len] = tmp;
@@ -177,17 +177,17 @@ int main()
         scanf("%c",&tmp);
     }
     if(Judge(c,len))
-        printf("¸Ã×Ö·û´®ÊÇ»ØÎÄ£¡\n");
-    else printf("¸Ã×Ö·û´®²»ÊÇ»ØÎÄ£¡\n");
+        printf("è¯¥å­—ç¬¦ä¸²æ˜¯å›æ–‡ï¼\n");
+    else printf("è¯¥å­—ç¬¦ä¸²ä¸æ˜¯å›æ–‡ï¼\n");
     printf("\n");
     system("pause");
     return 0;
 }
 
 /*
-ÊäÈëÒªÅĞ¶ÏµÄ×Ö·û´®(ÊäÈë'#'Í£Ö¹ÊäÈë£¬×Ö·û´®×î´ó³¤¶È100):
+è¾“å…¥è¦åˆ¤æ–­çš„å­—ç¬¦ä¸²(è¾“å…¥'#'åœæ­¢è¾“å…¥ï¼Œå­—ç¬¦ä¸²æœ€å¤§é•¿åº¦100):
 abcdefgfedcba#
-¸Ã×Ö·û´®ÊÇ»ØÎÄ£¡
+è¯¥å­—ç¬¦ä¸²æ˜¯å›æ–‡ï¼
 
-Çë°´ÈÎÒâ¼ü¼ÌĞø. . .
+è¯·æŒ‰ä»»æ„é”®ç»§ç»­. . .
 */
