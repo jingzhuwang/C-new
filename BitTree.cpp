@@ -78,7 +78,7 @@ int Node_Count(BitTree &T)
     if (T == NULL)
         return 0;
     else
-        return Node_Count(T->lchild) + Node_Count(T->rchild);
+        return Node_Count(T->lchild) + Node_Count(T->rchild) + 1;
 }
 
 void Traver(BitTree &T)
