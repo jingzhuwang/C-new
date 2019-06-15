@@ -182,14 +182,13 @@ int main()
         printf("该字符串是回文！\n");
     else printf("该字符串不是回文！\n");
     printf("\n");
-    system("pause");
     return 0;
 }
 
 /*
-输入要判断的字符串(输入'#'停止输入，字符串最大长度100):
-abcdefgfedcba#
-该字符串是回文！
+示例输入：
+    abcdefgfedcba#
+示例输出：
+    该字符串是回文！
 
-请按任意键继续. . .
 */

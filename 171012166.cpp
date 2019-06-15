@@ -54,7 +54,6 @@ Status CreateGraphy(Graphy &G)
     for (int i = 0; i < G.arcsnum; i++)
     {
         scanf("%c %c %d", &row, &col, &value);
-        //printf("%c,%c,%d",row,col,value);
         getchar();
         j = Locate(G, row);
         k = Locate(G, col);
@@ -68,7 +67,7 @@ Status DestroyGraphy(Graphy &G)
     for (int i = 0; i < G.vexnum; i++)
         free(G.arcs[i]);
 
-    //free(G.vexs);
+    free(G.vexs);
     free(G.arcs);
     G.vexs = NULL;
     G.arcs = NULL;
@@ -122,18 +121,9 @@ void ShortPath_DIJ(Graphy G, GElemType key)
             for (; Path[pre] != -1; pre = Path[pre])
                 printf("%c->", G.vexs[pre]);
             printf("%c", G.vexs[pre]);
-            /* while(pre!=-1){
-                if(Path[pre]!=-1)
-                    printf("%c<-",G.vexs[pre]);
-                else printf("%c",G.vexs[pre]);
-                pre = Path[pre];
-            }*/
             printf("\n");
         }
     }
-    /*for(int i = 0;i< n;i++)
-        printf("%d  ",Path[i]);
-    printf("\n");*/
     free(D);
     free(S);
     free(Path);
@@ -144,21 +134,15 @@ int main()
     Graphy G;
     GElemType key;
     CreateGraphy(G);
-    for (int i = 0; i < G.vexnum; i++)
-    {
-        for (int j = 0; j < G.vexnum; j++)
-            printf("%10d", G.arcs[i][j]);
-        printf("\n");
-    }
     printf("请输入源点:");
     scanf("%c", &key);
     ShortPath_DIJ(G, key);
     DestroyGraphy(G);
-    system("pause");
     return 0;
 }
 
 /*
+示例输入：
 6
 abcdef
 8
@@ -170,4 +154,10 @@ c d 50
 d f 10
 e f 60
 e c 20
+a
+示例输出：
+c->a
+d->c->a
+e->a
+f->d->c->a
 */

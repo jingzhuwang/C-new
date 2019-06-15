@@ -5,7 +5,7 @@
 int* CreateArray(int &n){ //返回矩阵阶数
     int *nums;
     int size;
-    printf("输出矩阵阶数:");
+    printf("输入矩阵阶数:");
     scanf("%d",&n);
     size = n * (n + 1) / 2;
     nums = (int*)malloc(sizeof(int)*size);
@@ -57,6 +57,19 @@ int main()
     Search(nums);
     free(nums);
     nums = NULL;
-     system("pause");
     return 0;
 }
+
+/*
+示例输入:
+    3
+    1 2 3 4 5 6
+示例输出:
+
+    1  0  0
+    2  3  0
+    4  5  6
+
+    输入要查找元素的行号和列号:0 0
+    数组下标为:0,值为:1
+ */

@@ -80,7 +80,7 @@ Status CreateBiTree(BiTree &T){ //层序创建二叉树
     LinkQueue Q;
     BitNode* p;
     char elem;
-    int i = 0;
+    int i = 0; //判定创建左孩子还是右孩子
     Init(Q);
     printf("层序输入二叉树的元素(@代表该节点为空，#结束输入):");
     scanf("%c",&elem);
@@ -209,6 +209,23 @@ int main()
     printf("该树节点数为：%d\n",count);
     DestroyBiTree(T1);
     DestroyBiTree(T);
-    system("pause");
     return 0;
 }
+
+/*
+示例输入：
+    ABCD@EF@G@H#
+示例输出：
+以下是二叉树的树形输出，@符号代表该位置为空:
+          A
+      B       C
+    D   @   E   F
+   @ G @ @ @ H @ @
+复制的二叉树为:
+以下是二叉树的树形输出，@符号代表该位置为空:
+          A
+      B       C
+    D   @   E   F
+   @ G @ @ @ H @ @
+该树节点数为：8
+ */

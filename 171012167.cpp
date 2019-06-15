@@ -83,16 +83,67 @@ void displayHT(int *HT,int len)
 
 int main()
 {
-	int num[] = {10,24,32,17,31,30,46,47,40,63,49}; // 11
+	int len;
+    printf("输入待排序数组长度:");
+    scanf("%d",&len);
+    int *nums = (int*)malloc(sizeof(int)*len);
+    printf("输入数组数据元素:");
+    for(int i = 0;i < len;i++)
+		scanf("%d",&nums[i]);
 	int HT_line[18] = {}; //线性探测构成的散列
 	int HT_second[18] = {}; //二次探测构成的散列
-	create_line(num,HT_line,11);
-	create_second(num,HT_second,11);
+	create_line(nums,HT_line,11);
+	create_second(nums,HT_second,11);
 	printf("线性探测散列:\n");
 	displayHT(HT_line, 18);
 	printf("\n二次探测散列:\n");
 	displayHT(HT_second, 18);
 	printf("\n");
-	system("pause");
 	return 0;
 }
+
+/*
+示例输入：
+11
+10 24 32 17 31 30 46 47 40 63 49
+示例输出：
+线性探测散列:
+[0:32]
+[1:17]
+[2:63]
+[3:49]
+[4: ]
+[5: ]
+[6: ]
+[7: ]
+[8:24]
+[9:40]
+[10:10]
+[11: ]
+[12: ]
+[13: ]
+[14:30]
+[15:31]
+[16:46]
+[17:47]
+
+二次探测散列:
+[0:32]
+[1:17]
+[2:49]
+[3: ]
+[4: ]
+[5: ]
+[6: ]
+[7: ]
+[8:24]
+[9:40]
+[10:10]
+[11:63]
+[12: ]
+[13:46]
+[14:30]
+[15:31]
+[16:47]
+[17: ]
+ */
