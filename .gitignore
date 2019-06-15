@@ -1,6 +1,7 @@
 .vscode/launch.json
 .vscode/settings.json
 .vscode
+*.json
 
 # Prerequisites
 *.d
@@ -37,7 +38,6 @@
 *.exe
 *.out
 *.app
-*.json
 
 # Object files
 *.ko
